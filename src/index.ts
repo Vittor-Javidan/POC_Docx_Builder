@@ -3,6 +3,7 @@ import { Docx_Paragraph } from "./WordComponents/Paragraph";
 import { Docx_Image } from "./WordComponents/Image";
 import { ContentRelationship } from "./Services/ContentRelationship";
 import { Docx_Document } from "./WordComponents/Document";
+import { Zip } from "./Services/Zip";
 
 ContentRelationship.createContentTypesFile();
 ContentRelationship.createRelationshipFolder();
@@ -25,3 +26,4 @@ ContentRelationship.WordFolder(
     Docx_Image("io2.jpeg", { width: 3, height: 2 }),
   ])
 )
+Zip.createDocx();
