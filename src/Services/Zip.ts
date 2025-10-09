@@ -4,7 +4,6 @@ import { join } from "path";
 export class Zip {
 
   static ROOT_DIR = "docx_output";
-  static OUTPUT_FILE = "docx_output.docx";
 
   static LOCAL_FILE_HEADER_SIG = 0x04034b50;
   static CENTRAL_DIR_SIG = 0x02014b50;
@@ -13,11 +12,11 @@ export class Zip {
   static u16 = (v: number) => { const b = Buffer.alloc(2); b.writeUInt16LE(v); return b; };
   static u32 = (v: number) => { const b = Buffer.alloc(4); b.writeUInt32LE(v); return b; };
 
-  static createDocx() {
+  static createDocx(outputFilename: string = "docx_output.docx") {
     /** Little-endian writers */
     const zipBuffer = this.buildZip(this.ROOT_DIR);
-    writeFileSync(this.OUTPUT_FILE, zipBuffer);
-    console.log(`✅ Created ${this.OUTPUT_FILE} with all docx files (no compression).`);
+    writeFileSync(outputFilename, zipBuffer);
+    console.log(`✅ Created ${outputFilename} with all docx files (no compression).`);
   }
 
   private static crc32(buf: Buffer): number {
