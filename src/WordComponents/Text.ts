@@ -8,22 +8,14 @@ export function Docx_Text(props: TextProps): string {
 
   const bold = props.bold ? "<w:b/>" : "";
   const italic = props.italic ? "<w:i/>" : "";
+  const styles = bold || italic ? `<w:rPr>${bold}${italic}</w:rPr>` : "";
 
   const sanitizedInvalidXMLChars = sanitizeInvalidXMLChars(props.text);
   const parsedText = escapeSpecialXMLChars(sanitizedInvalidXMLChars);
+  const textElement = `<w:t xml:space="preserve">${parsedText}</w:t>`;
 
   return (
-
-    ""                                + "      " +
-    "<w:r>\n"                         + "      " +
-    `  <w:rPr>\n`                     + "      " +
-    `    ${bold}${italic}\n`          + "      " +
-    `  </w:rPr>\n`                    + "      " +
-    `  <w:t xml:space="preserve">\n`  + "      " +
-    `    ${parsedText}\n`             + "      " +
-    "  </w:t>\n"                      + "      " +
-    "</w:r>\n"
-
+    `<w:r>${styles}${textElement}</w:r>`
   );
 }
 

@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
 import { Docx_Text } from "./WordComponents/Text";
 import { Docx_Paragraph } from "./WordComponents/Paragraph";
+import { Docx_Document } from "./WordComponents/Document";
 
 const baseDir = "./docx_output";
 
@@ -46,14 +47,14 @@ const textArray: string[] = [
   Docx_Text({ bold: true, italic: true, text: `U+D800–U+DFFF` }),
   Docx_Text({ text: "U+FFFE" }),
 ]
-const documentXml = (
-`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n` +
-`<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">\n` +
-`  <w:body>\n` +
-`    ${Docx_Paragraph(textArray)}` +
-`  </w:body>\n` +
-`</w:document>
-`);
+
+// const documentXml = (
+// `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+// <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+//   <w:body>${Docx_Paragraph(textArray)}</w:body>
+// </w:document>`);
+
+const documentXml = Docx_Document([Docx_Paragraph(textArray)]);
 
 writeFileSync(join(baseDir, "word/document.xml"), documentXml);
 
