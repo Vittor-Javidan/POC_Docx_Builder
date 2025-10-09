@@ -1,0 +1,26 @@
+{
+  "name": "docx_proprietary_library",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Vittor-Javidan/DOCX_Proprietary_Library#readme",
+  "bugs": {
+    "url": "https://github.com/Vittor-Javidan/DOCX_Proprietary_Library/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vittor-Javidan/DOCX_Proprietary_Library.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.6",
+    "@types/node": "^20.19.19",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
