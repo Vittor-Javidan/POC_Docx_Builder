@@ -8,7 +8,7 @@ export function Docx_Text(props: TextProps): string {
 
   const bold = props.bold ? "<w:b/>" : "";
   const italic = props.italic ? "<w:i/>" : "";
-  const styles = bold || italic ? `<w:rPr>${bold}${italic}</w:rPr>` : "";
+  const styles = props.bold || props.italic ? `<w:rPr>${bold}${italic}</w:rPr>` : "";
 
   const sanitizedInvalidXMLChars = sanitizeInvalidXMLChars(props.text);
   const parsedText = escapeSpecialXMLChars(sanitizedInvalidXMLChars);
