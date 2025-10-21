@@ -1,5 +1,5 @@
 import { join } from "path";
-import { createReadStream, createWriteStream, mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
 
 export class Docx {
 

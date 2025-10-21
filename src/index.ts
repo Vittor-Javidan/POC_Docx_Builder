@@ -12,6 +12,10 @@ Docx.CreateWordFolder({
   document: (
     Docx_Document([
       Docx_Paragraph([
+        Docx_Text({ text: "Hello World!", fontSize: 24, color: "FF0000" }),
+        Docx_Text({ text: "Hello World!", fontSize: 60, color: "FF0000" }),
+      ]),
+      Docx_Paragraph([
         Docx_Text({ bold: true, text: "bold text" }),
         Docx_Text({ italic: true, text: "italic text" }),
         Docx_Text({ text: "underlined text" }),

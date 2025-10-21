@@ -1,14 +1,20 @@
 type TextProps = {
+  text: string;
+  fontSize?: number;
+  color?: string;
   bold?: boolean;
   italic?: boolean;
-  text: string;
 }
 
 export function Docx_Text(props: TextProps): string {
 
+  const FONT_SIZE_CONVERSION = 2;
+
   const bold = props.bold ? "<w:b/>" : "";
   const italic = props.italic ? "<w:i/>" : "";
-  const styles = props.bold || props.italic ? `<w:rPr>${bold}${italic}</w:rPr>` : "";
+  const fontSize = props.fontSize ? `<w:sz w:val="${props.fontSize * FONT_SIZE_CONVERSION}"/>` : "";
+  const color = props.color ? `<w:color w:val="${props.color}"/>` : "";
+  const styles = (props.bold || props.italic || props.fontSize || props.color) ? `<w:rPr>${bold}${italic}${fontSize}${color}</w:rPr>` : "";
 
   const sanitizedInvalidXMLChars = sanitizeInvalidXMLChars(props.text);
   const parsedText = escapeSpecialXMLChars(sanitizedInvalidXMLChars);
